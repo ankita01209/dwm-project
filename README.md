@@ -109,7 +109,7 @@ The selling price is a continuous value, so this is a **regression** problem. Ca
 | Development | Jupyter Notebook, VS Code |
 | Version control | Git, GitHub |
 
-## CarWise/
+CarWise/
 ├── data/
 │   └── car_details.csv
 ├── models/
