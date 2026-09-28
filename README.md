@@ -1,6 +1,6 @@
-# 🚗 CarWise: Used Car Price Prediction & Market Analysis
+# CarWise: Used Car Price Prediction & Market Analysis
 
-> A Data Warehousing and Mining (DWM) mini project that covers the full data-mining pipeline, from cleaning and exploratory analysis to K-Means clustering and regression, and delivers it through an interactive Streamlit dashboard.
+A Data Warehousing and Mining (DWM) mini project that covers the full data-mining pipeline, from cleaning and exploratory analysis to K-Means clustering and regression, and delivers it through an interactive Streamlit dashboard.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
@@ -9,13 +9,13 @@
 
 ---
 
-## 📌 Overview
+## Overview
 
 Used-car prices depend on many factors: how old the car is, how much it has been driven, its fuel type, transmission, ownership history and who is selling it. Estimating a fair price by hand is difficult.
 
 **CarWise** uses historical CarDekho data to discover price-related patterns and provides a data-driven **estimated selling price** for a user's car details. The project is not only an ML model. Its value lies in the complete DWM pipeline: data understanding, cleaning, transformation, EDA, clustering, regression, evaluation and visualization.
 
-## 🎯 Objectives
+## Objectives
 
 - Understand and preprocess the CarDekho used-car dataset
 - Identify relationships between car attributes and selling price
@@ -26,17 +26,17 @@ Used-car prices depend on many factors: how old the car is, how much it has been
 - Build an interactive dashboard for analysis and prediction
 - Document assumptions, limitations and future improvements
 
-## ✨ Features
+## Features
 
 | Page | What it does |
 | --- | --- |
-| 🏠 **Home / Overview** | Project summary, dataset KPIs and the DWM workflow |
-| 💰 **Price Predictor** | Form for car details, input validation, predicted selling price |
-| 📊 **Market Analysis** | Interactive Plotly charts of price vs. fuel, transmission, seller type, owner, year and kilometres driven |
-| 🧩 **Car Segmentation** | K-Means cluster sizes, characteristics and visualization |
-| 💡 **Insights** | Key findings and takeaways from the analysis |
+| **Home / Overview** | Project summary, dataset KPIs and the DWM workflow |
+| **Price Predictor** | Form for car details, input validation, predicted selling price |
+| **Market Analysis** | Interactive Plotly charts of price vs. fuel, transmission, seller type, owner, year and kilometres driven |
+| **Car Segmentation** | K-Means cluster sizes, characteristics and visualization |
+| **Insights** | Key findings and takeaways from the analysis |
 
-## 🗂️ Dataset
+## Dataset
 
 - **Source:** CarDekho used-car dataset
 - **Size:** 4,340 records originally, **3,577** after removing duplicate rows
@@ -55,11 +55,11 @@ Used-car prices depend on many factors: how old the car is, how much it has been
 | `brand` | Categorical | Extracted from the car name, which avoids one-hot encoding thousands of unique model names |
 | `selling_price` | Numerical | **Target variable** |
 
-## 🔄 DWM Workflow
+## DWM Workflow
 
 ```
-Data Understanding → Cleaning → Transformation → EDA → K-Means Clustering
-        → Regression Modelling → Model Selection → Saved Pipeline → Streamlit Dashboard
+Data Understanding -> Cleaning -> Transformation -> EDA -> K-Means Clustering
+        -> Regression Modelling -> Model Selection -> Saved Pipeline -> Streamlit Dashboard
 ```
 
 1. **Data Understanding:** shape, data types, unique values, duplicates and missing values
@@ -72,7 +72,7 @@ Data Understanding → Cleaning → Transformation → EDA → K-Means Clusterin
 8. **Packaging:** model and preprocessing saved together as one pipeline
 9. **Dashboard:** Streamlit app with Plotly visualizations
 
-## 🧩 Clustering (K-Means)
+## Clustering (K-Means)
 
 K-Means with **K = 3** groups the cars into three market segments:
 
@@ -84,7 +84,7 @@ K-Means with **K = 3** groups the cars into three market segments:
 
 Features were scaled before clustering because K-Means is distance-based and would otherwise be dominated by large-valued features such as `km_driven`. Clustering is an analytical feature of the project and is not part of the price-prediction calculation.
 
-## 🤖 Price Prediction
+## Price Prediction
 
 The selling price is a continuous value, so this is a **regression** problem. Candidate models:
 
@@ -96,7 +96,7 @@ The selling price is a continuous value, so this is a **regression** problem. Ca
 
 **Evaluation metrics:** MAE, RMSE and R².
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Tools |
 | --- | --- |
@@ -109,6 +109,9 @@ The selling price is a continuous value, so this is a **regression** problem. Ca
 | Development | Jupyter Notebook, VS Code |
 | Version control | Git, GitHub |
 
+## Project Structure
+
+```
 CarWise/
 ├── data/
 │   └── car_details.csv
@@ -128,15 +131,17 @@ CarWise/
 └── README.md
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 **1. Clone the repository**
+
 ```bash
 git clone https://github.com/ankita01209/dwm-project.git
 cd dwm-project
 ```
 
 **2. Create and activate a virtual environment (recommended)**
+
 ```bash
 python -m venv venv
 venv\Scripts\activate        # Windows
@@ -144,18 +149,20 @@ source venv/bin/activate     # macOS / Linux
 ```
 
 **3. Install dependencies**
+
 ```bash
 pip install -r requirements.txt
 ```
 
 **4. Run the app**
+
 ```bash
 streamlit run app.py
 ```
 
 The dashboard opens at `http://localhost:8501`.
 
-## 🧪 Input Validation & Testing
+## Input Validation and Testing
 
 The Price Predictor validates input before running the model.
 
@@ -169,8 +176,7 @@ The Price Predictor validates input before running the model.
 | Model file missing | Controlled error message, no crash |
 | Same input run twice | Identical result (reproducible) |
 
-
-## 🔮 Future Scope
+## Future Scope
 
 - Retrain periodically on more recent listings
 - Add richer attributes such as engine, mileage, power, location and insurance status
