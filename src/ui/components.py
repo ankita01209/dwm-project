@@ -110,36 +110,19 @@ def workflow_map():
     st.markdown(textwrap.dedent(html), unsafe_allow_html=True)
 
 @st.cache_data
-def get_feature_importances(_model):
-    """Safely unwraps the pipeline and calculates aggregate base feature importances."""
+def get_feature_importances():
+    """Loads aggregate base feature importances natively from centralized metrics."""
     import pandas as pd
+    import json
+    import os
     try:
-        if not hasattr(_model, 'named_steps'):
-            return None
-        prep = _model.named_steps['preprocessor']
-        reg_step = _model.named_steps['regressor']
-        
-        rf = reg_step.regressor_ if hasattr(reg_step, 'regressor_') else reg_step
-        if not hasattr(rf, 'feature_importances_'):
-            return None
+        metrics_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'models', 'metrics.json')
+        with open(metrics_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
             
-        importances = rf.feature_importances_
-        features_out = prep.get_feature_names_out()
-        
-        base_features = ['car_age', 'km_driven', 'fuel', 'seller_type', 'transmission', 'owner', 'brand']
-        agg = {b: 0.0 for b in base_features}
-        
-        for feat, imp in zip(features_out, importances):
-            for b in base_features:
-                if b in feat:
-                    agg[b] += imp
-                    break
-                    
-        total = sum(agg.values())
-        if total > 0:
-            agg = {k: v/total * 100 for k, v in agg.items()}
-            
-        df = pd.DataFrame(list(agg.items()), columns=['Feature', 'Importance'])
+        importances = data.get('rf_feature_importance', {})
+        df = pd.DataFrame(list(importances.items()), columns=['Feature', 'Importance'])
+        df['Importance'] = df['Importance'] * 100
         df = df.sort_values(by='Importance', ascending=True)
         df['Label'] = df['Feature'].replace({
             'car_age': 'Car age',

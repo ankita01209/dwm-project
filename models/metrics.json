@@ -1,0 +1,37 @@
+{
+  "models": [
+    {
+      "Model": "Linear Regression",
+      "Train_MAE": 162856.49,
+      "Test_MAE": 179642.88,
+      "Test_RMSE": 384722.37,
+      "Train_R2": 0.6608,
+      "Test_R2": 0.5405
+    },
+    {
+      "Model": "Decision Tree",
+      "Train_MAE": 17137.37,
+      "Test_MAE": 195085.31,
+      "Test_RMSE": 471391.3,
+      "Train_R2": 0.9887,
+      "Test_R2": 0.3102
+    },
+    {
+      "Model": "Random Forest",
+      "Train_MAE": 61687.34,
+      "Test_MAE": 157686.48,
+      "Test_RMSE": 363871.46,
+      "Train_R2": 0.9432,
+      "Test_R2": 0.589
+    }
+  ],
+  "rf_feature_importance": {
+    "transmission": 0.2476,
+    "brand": 0.24,
+    "car_age": 0.2217,
+    "km_driven": 0.1336,
+    "fuel": 0.1157,
+    "seller_type": 0.0235,
+    "owner": 0.0179
+  }
+}

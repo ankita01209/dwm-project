@@ -71,7 +71,7 @@ def run_prediction_ui(df_full, form_data):
     with col1:
         st.markdown("<h4 style='font-family:Fraunces, serif; font-size:18px; margin-bottom:16px;'>Model-wide feature importance</h4>", unsafe_allow_html=True)
         from src.ui.components import get_feature_importances, render_feature_importance_chart
-        df_imp = get_feature_importances(model)
+        df_imp = get_feature_importances()
         render_feature_importance_chart(df_imp)
 
     with col2:

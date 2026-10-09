@@ -10,7 +10,7 @@ import os
 import joblib
 import pandas as pd
 
-MODEL_PATH = "models/car_price_random_forest.pkl"
+MODEL_PATH = "models/car_price_random_forest_final.pkl"
 
 # Expected feature order — must match the training pipeline exactly.
 PREDICTION_FEATURES = [
